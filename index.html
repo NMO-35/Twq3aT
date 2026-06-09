@@ -24,7 +24,7 @@
             background-color: var(--bg-main);
             color: var(--text-white);
             margin: 0; padding: 0;
-            padding-bottom: 90px; 
+            padding-bottom: 140px; /* زيادة المساحة لراحة العين مع وجود الفوتر والشريط السفلي */
             overflow-x: hidden;
         }
 
@@ -37,7 +37,7 @@
         header h1 { font-size: 1.4rem; margin: 0; font-weight: 800; letter-spacing: -0.5px; }
         header p { font-size: 0.8rem; color: var(--text-gray); margin: 5px 0 0 0; }
 
-        .container { max-width: 480px; margin: 0 auto; padding: 16px; }
+        .container { max-width: 480px; margin: 0 auto; padding: 16px; min-height: calc(100vh - 200px); }
 
         .app-view { display: none; }
         .app-view.active { display: block; animation: fadeIn 0.3s ease; }
@@ -115,6 +115,23 @@
         .leaderboard-table tr:last-child td { border-bottom-left-radius: 14px; border-bottom-right-radius: 14px; }
         .rank-num { color: var(--neon-lime); font-weight: 800; font-size: 1.1rem; }
 
+        /* تصميم الفوتر الاحترافي المضاف */
+        footer {
+            text-align: center;
+            padding: 15px;
+            font-size: 0.82rem;
+            color: var(--text-gray);
+            background-color: rgba(6, 18, 10, 0.8);
+            border-top: 1px solid rgba(255,255,255,0.02);
+            position: relative;
+            margin-top: 40px;
+            letter-spacing: 0.5px;
+        }
+        footer span {
+            color: var(--neon-lime);
+            font-weight: 700;
+        }
+
         .bottom-nav {
             position: fixed; bottom: 0; left: 0; right: 0; height: 75px;
             background-color: #0c1810; border-top: 1px solid rgba(255, 255, 255, 0.04);
@@ -173,7 +190,7 @@
 
         <form id="predictions-form" onsubmit="saveMemberPredictions(event)">
             <h3 style="margin: 24px 8px 12px 0; font-size: 1.1rem; font-weight:800; color: var(--neon-lime);">⚽ جدول التوقعات الفورية</h3>
-            <div id="matches-list-container" style="text-align: center; color: var(--text-gray); padding: 20px;">جاري سحب المباريات المباشرة والتواريخ من السيرفر الرياضي العالمي...</div>
+            <div id="matches-list-container" style="text-align: center; color: var(--text-gray); padding: 20px;">جاري تحميل جدول المباريات...</div>
             
             <button type="submit" class="action-btn">إرسال وقفل بطاقتي السحابية ⚡</button>
         </form>
@@ -203,6 +220,10 @@
 
 </div>
 
+<footer>
+    برمجة وتطوير | <span>NMO</span> &copy; 2026
+</footer>
+
 <div class="bottom-nav">
     <div class="nav-item active" id="btn-nav-matches" onclick="switchView('matches')">
         <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.53c-.26-.81-1-1.4-1.9-1.4h-1v-3c0-.55-.45-1-1-1h-6v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.4z"/></svg>
@@ -213,16 +234,15 @@
         <span>الصدارة</span>
     </div>
     <div class="nav-item" id="btn-nav-admin" onclick="switchView('admin')">
-        <svg viewBox="0 0 24 24"><path d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3-1.07-3-3s1.07-3 3-3 3 1.07 3 3-1.07 3-3 3z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73-1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3-1.07-3-3s1.07-3 3-3 3 1.07 3 3-1.07 3-3 3z"/></svg>
         <span>الإدارة</span>
     </div>
 </div>
 
 <script>
-    const ADMIN_PASSWORD = "2026";
+    const ADMIN_PASSWORD = "995511";
     let isAdminAuthenticated = false;
 
-    // 🔗 مصفوفة الإعدادات الحقيقية والخاصة بك تم دمجها هنا بنجاح:
     const firebaseConfig = {
         apiKey: "AIzaSyARPYOdMAEwAYqEO6uKk8n-ewg0pTmHBAk",
         authDomain: "worldcup-predictions-e62c5.firebaseapp.com",
@@ -254,7 +274,7 @@
 
     function switchView(viewName) {
         if(viewName === 'admin' && !isAdminAuthenticated) {
-            let pass = prompt("الرجاء إدخال رمز التحقق الخاص بالإدارة لفتح اللوحة المتصلة أونلاين:");
+            let pass = prompt("الرجاء إدخال رمز التحقق الجديد الخاص بالإدارة:");
             if(pass === ADMIN_PASSWORD) {
                 isAdminAuthenticated = true;
             } else {
@@ -274,49 +294,33 @@
 
     async function fetchMatchesFromAPI() {
         const container = document.getElementById('matches-list-container');
-        const proxyUrl = "https://api.allorigins.win/get?url=";
-        const apiUrl = `https://api.football-data.org/v4/competitions/${COMPETITION_CODE}/matches`;
         
-        try {
-            const response = await fetch(proxyUrl + encodeURIComponent(apiUrl), {
-                headers: { "X-Auth-Token": FOOTBALL_DATA_API_KEY }
-            });
-            const rawData = await response.json();
-            const data = JSON.parse(rawData.contents);
-            const apiMatches = data.matches || [];
-            
-            if(apiMatches.length === 0) {
-                container.innerHTML = "<p style='text-align:center; color:var(--text-gray);'>لا توجد مباريات مدرجة في السيرفر حالياً.</p>";
-                return;
-            }
+        const officialMatchesLayout = [
+            { id: 201, teamH: "المكسيك", flagH: "🇲🇽", teamA: "جنوب إفريقيا", flagA: "🇿🇦", meta: "الخميس 11 يونيو 2026 مـ (25 ذو الحجة 1447 هـ) | الساعة 10:00 مساءً" },
+            { id: 202, teamH: "كوريا الجنوبية", flagH: "🇰🇷", teamA: "التشيك", flagA: "🇨🇿", meta: "الجمعة 12 يونيو 2026 مـ (26 ذو الحجة 1447 هـ) | الساعة 05:00 صباحاً (فجراً)" },
+            { id: 203, teamH: "كندا", flagH: "🇨🇦", teamA: "البوسنة والهرسك", flagA: "🇧🇦", meta: "الجمعة 12 يونيو 2026 مـ (26 ذو الحجة 1447 هـ) | الساعة 10:00 مساءً" },
+            { id: 204, teamH: "أمريكا", flagH: "🇺🇸", teamA: "الباراغواي", flagA: "🇵🇾" , meta: "السبت 13 يونيو 2026 مـ (27 ذو الحجة 1447 هـ) | الساعة 04:00 صباحاً (فجراً)" }
+        ];
 
-            remoteData.matches = [];
+        db.ref('official_matches').once('value', (snapshot) => {
+            let matches = snapshot.val();
+            
+            db.ref('official_matches').set(officialMatchesLayout);
+            matches = officialMatchesLayout;
+
+            remoteData.matches = matches;
             container.innerHTML = "";
             
-            apiMatches.slice(0, 20).forEach(m => {
-                const dateObj = new Date(m.utcDate);
-                let formattedTime = dateObj.toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit', hour12: true, timeZone: 'Asia/Riyadh' }).replace("م", "مساءً").replace("ص", "صباحاً");
-                let formattedDateMeladi = dateObj.toLocaleDateString('ar-EG', { weekday: 'long', day: 'numeric', month: 'long', timeZone: 'Asia/Riyadh' });
-                let formattedDateHijri = dateObj.toLocaleDateString('ar-TN-u-ca-islamic-umalqura', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Asia/Riyadh' });
-                
-                let finalMeta = `${formattedDateMeladi} (${formattedDateHijri}) • بتوقيت مكة ${formattedTime}`;
-                
-                let statusText = "مجدولة"; let statusClass = "st-scheduled-badge";
-                if(m.status === "LIVE" || m.status === "IN_PLAY") { statusText = "مباشر الآن ⚽"; statusClass = "st-live-badge"; }
-                if(m.status === "FINISHED") { statusText = "انتهت"; statusClass = "st-finished-badge"; }
-
-                remoteData.matches.push({ id: m.id, teamH: m.homeTeam.name, teamA: m.awayTeam.name });
-
+            matches.forEach(m => {
                 container.innerHTML += `
                     <div class="match-card">
                         <div class="match-top-info">
-                            <span>🗓️ ${finalMeta}</span>
-                            <span class="status-badge ${statusClass}">${statusText}</span>
+                            <span>🗓️ ${m.meta}</span>
                         </div>
                         <div class="match-main">
                             <div class="team-side left">
-                                <img class="team-flag-img" src="${m.homeTeam.crest}" onerror="this.style.opacity='0'">
-                                <span class="team-name">${m.homeTeam.tla || m.homeTeam.name}</span>
+                                <span class="team-flag-img" style="font-size: 1.8rem; line-height:1;">${m.flagH}</span>
+                                <span class="team-name">${m.teamH}</span>
                             </div>
                             <div class="score-container">
                                 <input type="number" min="0" id="pm_${m.id}_h" required placeholder="-">
@@ -324,31 +328,22 @@
                                 <input type="number" min="0" id="pm_${m.id}_a" required placeholder="-">
                             </div>
                             <div class="team-side right">
-                                <span class="team-name">${m.awayTeam.tla || m.awayTeam.name}</span>
-                                <img class="team-flag-img" src="${m.awayTeam.crest}" onerror="this.style.opacity='0'">
+                                <span class="team-name">${m.teamA}</span>
+                                <span class="team-flag-img" style="font-size: 1.8rem; line-height:1;">${m.flagA}</span>
                             </div>
                         </div>
                     </div>`;
             });
-
-            fillPicksDropdowns(apiMatches);
-
-        } catch (error) {
-            container.innerHTML = "<p style='color:#ff2a5f; text-align:center;'>⚠️ عذراً، تعذر سحب البيانات الفورية، يرجى التحقق من إعدادات الربط.</p>";
-        }
-    }
-
-    function fillPicksDropdowns(matches) {
-        const selects = [document.getElementById('pick-winner'), document.getElementById('pick-runner'), document.getElementById('pick-third')];
-        let uniqueTeams = new Map();
-        matches.forEach(m => {
-            if(m.homeTeam.name) uniqueTeams.set(m.homeTeam.name, m.homeTeam.name);
-            if(m.awayTeam.name) uniqueTeams.set(m.awayTeam.name, m.awayTeam.name);
-        });
-        let sortedTeams = Array.from(uniqueTeams.keys()).sort();
-        selects.forEach(sel => {
-            sel.innerHTML = '<option value="">اختر منتخب</option>';
-            sortedTeams.forEach(t => sel.innerHTML += `<option value="${t}">${t}</option>`);
+            
+            const selects = [document.getElementById('pick-winner'), document.getElementById('pick-runner'), document.getElementById('pick-third')];
+            let uniqueTeams = ["المكسيك", "جنوب إفريقيا", "كوريا الجنوبية", "التشيك", "كندا", "البوسنة والهرسك", "أمريكا", "الباراغواي", "الأرجنتين", "البرازيل", "فرنسا", "إسبانيا", "إنجلترا", "السعودية", "المغرب"].sort();
+            
+            selects.forEach(sel => {
+                if(sel.options.length <= 1) {
+                    sel.innerHTML = '<option value="">اختر منتخب</option>';
+                    uniqueTeams.forEach(t => sel.innerHTML += `<option value="${t}">${t}</option>`);
+                }
+            });
         });
     }
 
@@ -372,7 +367,7 @@
                 });
 
                 db.ref('members/' + name).set(memberPreds).then(() => {
-                    alert(`🎉 تم تخرين واعتماد بطاقة توقعاتك المباشرة باسم اللاعب [ ${name} ] بنجاح!`);
+                    alert(`🎉 تم تخزين واعتماد بطاقة توقعاتك المباشرة باسم اللاعب [ ${name} ] بنجاح!`);
                     document.getElementById('predictions-form').reset();
                     document.getElementById('member-id').value = "";
                 });
@@ -405,7 +400,7 @@
                 fetchMatchesFromAPI();
             });
         } catch (error) {
-            alert("❌ تعذر الاتصال بالسيرفر الرياضي الخارجي للمزامنة.");
+            alert("❌ تعذر الاتصال بالسيرفر الرياضي الخارجي للمزامنة التلقائية حالياً.");
         }
     }
 
